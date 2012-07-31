@@ -41,6 +41,7 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
+    logger.info { "X project = #{params[:project].inspect}X" }
 
     respond_to do |format|
       if @project.save
@@ -57,6 +58,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
+    logger.info { "X project = #{params[:project].inspect}X" }
 
     respond_to do |format|
       if @project.update_attributes(params[:project])

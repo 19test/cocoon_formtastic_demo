@@ -15,4 +15,4 @@
       .links
         = link_to_add_association 'add task', f, :tasks
     = f.actions do
-      = f.commit_button  :button_html => { :disable_with => 'Please wait ...'}
+      = f.action :submit,  button_html: { disable_with: 'Please wait ...'}

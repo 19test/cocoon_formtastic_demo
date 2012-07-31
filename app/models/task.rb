@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
 	belongs_to :project
-	has_many :temps
+	has_many :temps, dependent: :destroy
+  	accepts_nested_attributes_for :temps, allow_destroy: true
 
 	def done
 		not temps.empty?

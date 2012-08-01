@@ -8,13 +8,10 @@ class Task < ActiveRecord::Base
 	end
 
 	def done=(v)
-		logger.info { "M v=#{v.inspect} M" }
 		if v.to_i == 1
 			temps = [ Temp.find_or_create_by_task_id(id) ]
 		else
-			logger.info { ">> FALSE " }
-			temps = []
-			Temp.delete_all("task_id='#{id}'")
+			Temp.delete_all(["task_id = ?", id])
 		end
 	end
 end
